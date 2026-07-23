@@ -97,7 +97,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-#parceria,#como-funciona,#custo,#rastreio,#vantagens,#para-quem,#cobertura,#faq,#contato{scroll-margin-top:76px}
+#parceria,#como-funciona,#custo,#rastreio,#vantagens,#fornecedores,#para-quem,#depoimentos,#cobertura,#faq,#contato{scroll-margin-top:76px}
 html{background:var(--bg);transition:background-color .3s ease}
 body{
   font-family:var(--font-body);
@@ -823,6 +823,50 @@ body::after{
 
 
 
+/* ---------- Fornecedores (logo wall) ---------- */
+.suppliers .section-head{margin-bottom:2.6rem}
+.supplier-rail{
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+}
+.supplier-track{display:flex;width:max-content;animation:rail 32s linear infinite}
+.supplier-rail:hover .supplier-track{animation-play-state:paused}
+@keyframes rail{to{transform:translateX(-50%)}}
+.supplier-group{display:flex;gap:1.2rem;padding-right:1.2rem}
+.supplier-chip{
+  flex:none;display:flex;align-items:center;gap:.65rem;
+  padding:1.05rem 1.7rem;border-radius:var(--radius);
+  background:var(--surface);border:1px solid var(--line);
+  color:var(--ink-soft);font-weight:600;font-size:.9rem;white-space:nowrap;
+  filter:grayscale(1);opacity:.7;
+  transition:filter .25s ease,opacity .25s ease,border-color .25s ease;
+}
+.supplier-chip:hover{filter:grayscale(0);opacity:1;border-color:var(--line-strong)}
+.supplier-chip svg{color:var(--chip-text)}
+.supplier-chip img{height:36px;width:auto;display:block}
+
+/* ---------- Depoimentos ---------- */
+.quotes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.quote{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);
+  padding:2rem 1.7rem 1.7rem;display:flex;flex-direction:column;
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.quote:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.quote-mark{font-family:var(--font-display);font-size:3.6rem;font-weight:800;line-height:.6;color:var(--kraft-deep)}
+.quote blockquote{font-size:.95rem;color:var(--ink-soft);flex:1;margin:1.1rem 0 1.6rem;border:none}
+.quote-who{display:flex;align-items:center;gap:.8rem;border-top:1px dashed var(--line-strong);padding-top:1.2rem}
+.quote-avatar{
+  flex:none;width:44px;height:44px;border-radius:50%;overflow:hidden;
+  background:var(--chip-bg);color:var(--chip-text);
+  display:grid;place-items:center;
+  font-family:var(--font-display);font-weight:700;font-size:.95rem;
+}
+.quote-avatar img{width:100%;height:100%;object-fit:cover}
+.quote-who strong{display:block;font-size:.92rem;color:var(--heading);line-height:1.3}
+.quote-who small{font-size:.78rem;color:var(--ink-soft)}
+
 /* ---------- Reveal on scroll ---------- */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s cubic-bezier(.22,1,.36,1)}
 .reveal.visible{opacity:1;transform:none}
@@ -833,6 +877,7 @@ body::after{
   .steps{grid-template-columns:repeat(2,1fr)}
   .feat-grid{grid-template-columns:repeat(2,1fr)}
   .audience-grid{grid-template-columns:repeat(2,1fr)}
+  .quotes-grid{grid-template-columns:1fr}
   .mock{transform:none}
 }
 @media (max-width:640px){
@@ -872,6 +917,7 @@ body::after{
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
   .reveal{opacity:1;transform:none}
+  .supplier-track{animation:none}
 }
 </style>
 </head>
@@ -1257,6 +1303,49 @@ body::after{
   </div>
 </section>
 
+<!-- ================= FORNECEDORES ================= -->
+<section class="suppliers" id="fornecedores">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="kicker">Fornecedores parceiros</span>
+      <h2>Quem abastece o EloLink dentro do Ceasa.</h2>
+      <p>Fornecedores selecionados e homologados pela nossa equipe — os mesmos boxes de confiança, pedido após pedido.</p>
+    </div>
+  </div>
+  <!--
+    COMO TROCAR PELOS LOGOS REAIS:
+    1. Salve os logos em uma pasta "logos/" ao lado deste index.html.
+    2. Substitua cada chip placeholder abaixo por:
+         <div class="supplier-chip"><img src="logos/nome-do-fornecedor.png" alt="Nome do fornecedor"></div>
+       (o CSS já deixa o logo em preto-e-branco e devolve a cor no hover)
+    3. IMPORTANTE: os itens existem em DOIS grupos idênticos (.supplier-group) — é isso que
+       faz o loop infinito ser contínuo. Toda alteração feita no primeiro grupo deve ser
+       repetida igual no segundo (o que tem aria-hidden="true").
+  -->
+  <div class="supplier-rail reveal" aria-label="Fornecedores parceiros do EloLink">
+    <div class="supplier-track">
+      <div class="supplier-group">
+        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
+        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
+        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
+        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
+        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
+        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
+        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
+      </div>
+      <div class="supplier-group" aria-hidden="true">
+        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
+        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
+        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
+        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
+        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
+        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
+        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= PARA QUEM ================= -->
 <section id="para-quem">
   <div class="container">
@@ -1269,6 +1358,50 @@ body::after{
       <div class="aud reveal"><div class="emoji">🥬</div><h3>Sacolões</h3><p>Variedade e frescor sem madrugar no Ceasa.</p></div>
       <div class="aud reveal"><div class="emoji">🍽️</div><h3>Restaurantes</h3><p>Insumos no ponto certo, entregues com previsibilidade.</p></div>
       <div class="aud reveal"><div class="emoji">🛒</div><h3>Atacarejos</h3><p>Volume com garantia de qualidade e rastreio completo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DEPOIMENTOS ================= -->
+<!--
+  ATENÇÃO: os textos abaixo NÃO são depoimentos — são instruções de pauta.
+  Cada card indica o tema que funciona naquele slot. Ao coletar o depoimento
+  real com o cliente, use a pauta como roteiro da conversa e substitua o texto.
+-->
+<section id="depoimentos">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="kicker">Depoimentos</span>
+      <h2>Quem já compra pelo EloLink.</h2>
+    </div>
+    <div class="quotes-grid">
+      <figure class="quote reveal">
+        <span class="quote-mark" aria-hidden="true">“</span>
+        <blockquote>[Pauta: rotina antes × depois. Pergunte quanto tempo o dono gastava indo ao Ceasa — ou coordenando quem ia — e o que mudou no dia a dia da loja depois de passar a pedir pela cotação.]</blockquote>
+        <figcaption class="quote-who">
+          <!-- Foto real: troque as iniciais por <img src="fotos/cliente.jpg" alt=""> dentro do .quote-avatar -->
+          <span class="quote-avatar">NC</span>
+          <span><strong>Nome do cliente</strong><small>Loja · Cidade</small></span>
+        </figcaption>
+      </figure>
+      <figure class="quote reveal">
+        <span class="quote-mark" aria-hidden="true">“</span>
+        <blockquote>[Pauta: qualidade e conferência. Peça um caso concreto — uma caixa devolvida ao fornecedor, um padrão que passou a chegar certo — que mostre a conferência caixa a caixa funcionando na prática.]</blockquote>
+        <figcaption class="quote-who">
+          <!-- Foto real: troque as iniciais por <img src="fotos/cliente.jpg" alt=""> dentro do .quote-avatar -->
+          <span class="quote-avatar">NC</span>
+          <span><strong>Nome do cliente</strong><small>Loja · Cidade</small></span>
+        </figcaption>
+      </figure>
+      <figure class="quote reveal">
+        <span class="quote-mark" aria-hidden="true">“</span>
+        <blockquote>[Pauta: economia sem comprador próprio. Pergunte quanto custava manter um comprador no Ceasa — salário, comissão, encargos — e o que representou tirar esse custo da folha.]</blockquote>
+        <figcaption class="quote-who">
+          <!-- Foto real: troque as iniciais por <img src="fotos/cliente.jpg" alt=""> dentro do .quote-avatar -->
+          <span class="quote-avatar">NC</span>
+          <span><strong>Nome do cliente</strong><small>Loja · Cidade</small></span>
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>
