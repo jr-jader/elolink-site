@@ -1347,16 +1347,13 @@ body::after{
 
 <!-- ================= PRÉVIA DO SISTEMA ================= -->
 <!--
-  COMO TROCAR PELOS PRINTS REAIS DO SISTEMA:
-  1. Tire os prints e salve em "midia/" ao lado deste index.html.
-     - Notebook: print da tela de cotação/pedido no desktop, proporção ~16:10 (ex.: 1600×980).
-     - Celular: print do rastreio/pedido no celular, proporção ~9:19 (ex.: 750×1550).
-  2. ANTES de exportar, borre nomes de clientes, CNPJs e qualquer dado sensível.
-  3. Em cada tela, remova o <div class="shot-ph">…</div> e coloque no lugar:
-       <img src="midia/tela-cotacao.jpg" alt="descreva a tela" loading="lazy">
-     (também aceita <video autoplay muted loop playsinline> para gravação curta de tela)
-  4. NÃO use base64 — o arquivo já está pesado; referencie o arquivo em midia/.
-  O texto dentro de cada placeholder é a PAUTA do print que funciona naquele slot.
+  Prints capturados do sistema REAL (front-cotacao-ceasa) rodando com DADOS FICTÍCIOS
+  de demonstração — nomes de fornecedores/cliente e preços são ilustrativos.
+  PARA ATUALIZAR OS PRINTS:
+  1. Salve os novos em "midia/" (notebook ~16:10, ex. 1600×980; celular ~9:19, ex. 780×1612).
+  2. Se usar dados de produção, borre nomes de clientes, CNPJs e dados sensíveis antes.
+  3. Troque o src dos <img> abaixo. Também aceita <video autoplay muted loop playsinline>.
+  4. NÃO use base64 — referencie o arquivo em midia/ (webp/jpg leves).
 -->
 <section id="sistema">
   <div class="container sys-grid">
@@ -1368,11 +1365,7 @@ body::after{
             <span class="laptop-url">Sistema EloLink · Cotação do dia</span>
           </div>
           <div class="laptop-view">
-            <div class="shot-ph">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
-              <strong>Print do sistema no computador</strong>
-              <small>Melhor tela: cotação do dia com a lista de produtos e o pedido sendo montado.</small>
-            </div>
+            <img src="midia/sistema-cotacao.webp" alt="Tela do sistema EloLink no computador: cotação do dia com produtos, preços por caixa e por quilo, e pedido sendo montado" loading="lazy" width="1600" height="980">
           </div>
         </div>
         <div class="laptop-base" aria-hidden="true"></div>
@@ -1380,11 +1373,7 @@ body::after{
       <div class="phone">
         <span class="phone-notch" aria-hidden="true"></span>
         <div class="phone-view">
-          <div class="shot-ph">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg>
-            <strong>Print no celular</strong>
-            <small>Tela do rastreio do pedido em andamento.</small>
-          </div>
+          <img src="midia/sistema-rastreio.webp" alt="Tela do sistema EloLink no celular: acompanhamento do carregamento com progresso de caixas conferidas" loading="lazy" width="780" height="1612">
         </div>
       </div>
     </div>
@@ -1393,7 +1382,7 @@ body::after{
       <div class="section-head reveal" style="margin-bottom:0">
         <span class="kicker">Prévia do sistema</span>
         <h2>Veja como o EloLink é por dentro.</h2>
-        <p>Tudo o que esta página descreve acontece numa tela simples, feita pra quem tem pressa. Estas molduras recebem capturas reais do sistema — a mesma tela que nossos clientes usam todos os dias.</p>
+        <p>Tudo o que esta página descreve acontece numa tela simples, feita pra quem tem pressa. O que você vê aqui é o sistema de verdade: a cotação do dia no computador e o rastreio da carga no celular.</p>
       </div>
       <ul class="sys-points">
         <li class="reveal">
