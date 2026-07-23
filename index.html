@@ -633,7 +633,7 @@ body{transition:background-color .3s ease,color .3s ease}
 .cta-card::before{animation:glow 7s ease-in-out infinite alternate}
 @keyframes glow{from{opacity:.7;transform:scale(1)}to{opacity:1;transform:scale(1.25)}}
 
-/* ---------- Caminhãozinho viajante (estrada sinuosa) ---------- */
+/* ---------- Caminhão viajante (estrada sinuosa) ---------- */
 .truck-lane{
   position:fixed;inset:0;width:100%;height:100vh;
   z-index:-1;pointer-events:none;
@@ -675,23 +675,6 @@ body{transition:background-color .3s ease,color .3s ease}
 .truck-rider.honk .horn-bubble{transform:translateY(-50%) scale(1)}
 @media (max-width:900px){.truck-lane,.truck-rider{display:none}}
 
-/* ---------- Foto do Ceasa (slot de imagem) ---------- */
-.photo-band{
-  position:relative;border-radius:var(--radius-lg);overflow:hidden;
-  margin-top:3.2rem;min-height:220px;
-  background:
-    linear-gradient(120deg,rgba(14,58,38,.85),rgba(14,58,38,.35)),
-    repeating-conic-gradient(from 30deg,var(--chip-bg) 0 60deg,var(--surface-alt) 60deg 120deg);
-  background-size:cover,44px 44px;
-  display:flex;align-items:flex-end;
-}
-.photo-band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-.photo-band figcaption{
-  position:relative;z-index:1;padding:1.4rem 1.8rem;color:var(--paper);
-  font-size:.92rem;background:linear-gradient(transparent,rgba(14,58,38,.75));
-  width:100%;
-}
-.photo-band figcaption strong{font-family:var(--font-display)}
 
 /* ---------- Ticker de cotação ---------- */
 .ticker{
@@ -835,7 +818,7 @@ body::after{
 .map-hub{fill:var(--accent)}
 .map-hub-ring{fill:none;stroke:var(--accent);stroke-width:1.5;opacity:.6;transform-box:fill-box;transform-origin:center;animation:waPulse 2.2s ease-out infinite}
 .map-label{font-family:var(--font-mono);font-size:24px;font-weight:500;fill:var(--ink-soft)}
-.map-label-hub{font-weight:700;fill:var(--heading)}
+.map-label-hub{font-weight:700;fill:var(--heading);stroke:var(--bg);stroke-width:6;paint-order:stroke;stroke-linejoin:round}
 .map-note{margin-top:1.6rem;font-size:.85rem;color:var(--ink-soft)}
 
 
@@ -945,7 +928,7 @@ body::after{
       <h1>O Ceasa inteiro,<br>sem sair <span class="hl">da sua loja.<svg viewBox="0 0 200 14" aria-hidden="true" preserveAspectRatio="none"><path pathLength="1" d="M4 9 C 40 13, 85 3, 120 7 S 180 5, 196 8"/></svg></span></h1>
       <p class="hero-sub">
         O EloLink conecta o seu mercado ao Ceasa de Curitiba. Você escolhe os produtos na cotação do dia,
-        monta o seu <strong>Caminhãozinho</strong> e a nossa equipe cuida de todo o resto —
+        monta o seu <strong>pedido</strong> e a nossa equipe cuida de todo o resto —
         fornecedor, conferência, qualidade e carregamento. Você só recebe.
       </p>
       <div class="hero-ctas">
@@ -980,32 +963,32 @@ body::after{
         <li class="mock-item">
           <div class="prod">Tomate Italiano <small>Caixa 20 kg · Extra AA</small></div>
           <div class="price">R$ 78,00 <span class="down">▼ 4%</span></div>
-          <button class="add-btn" aria-label="Adicionar Tomate Italiano ao Caminhãozinho">+</button>
+          <button class="add-btn" aria-label="Adicionar Tomate Italiano ao pedido">+</button>
         </li>
         <li class="mock-item">
           <div class="prod">Banana Prata <small>Caixa 18 kg · Climatizada</small></div>
           <div class="price">R$ 62,50 <span class="up">▲ 2%</span></div>
-          <button class="add-btn" aria-label="Adicionar Banana Prata ao Caminhãozinho">+</button>
+          <button class="add-btn" aria-label="Adicionar Banana Prata ao pedido">+</button>
         </li>
         <li class="mock-item">
           <div class="prod">Alface Crespa <small>Caixa 12 un · Hidropônica</small></div>
           <div class="price">R$ 34,00 <span class="down">▼ 6%</span></div>
-          <button class="add-btn" aria-label="Adicionar Alface Crespa ao Caminhãozinho">+</button>
+          <button class="add-btn" aria-label="Adicionar Alface Crespa ao pedido">+</button>
         </li>
         <li class="mock-item">
           <div class="prod">Batata Lavada <small>Saco 25 kg · Especial</small></div>
           <div class="price">R$ 96,00 <span class="up">▲ 1%</span></div>
-          <button class="add-btn" aria-label="Adicionar Batata Lavada ao Caminhãozinho">+</button>
+          <button class="add-btn" aria-label="Adicionar Batata Lavada ao pedido">+</button>
         </li>
         <li class="mock-item">
           <div class="prod">Mamão Formosa <small>Caixa 15 kg · Ponto de venda</small></div>
           <div class="price">R$ 55,00 <span class="down">▼ 3%</span></div>
-          <button class="add-btn" aria-label="Adicionar Mamão Formosa ao Caminhãozinho">+</button>
+          <button class="add-btn" aria-label="Adicionar Mamão Formosa ao pedido">+</button>
         </li>
       </ul>
       <div class="mock-foot">
         <a href="#contato" class="btn btn-primary">
-          Finalizar Caminhãozinho
+          Finalizar pedido
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
@@ -1051,7 +1034,7 @@ body::after{
       <span class="kicker">Quem faz acontecer</span>
       <h2>Uma parceria oficial com a Sindaruc PR.</h2>
       <p>O serviço de compras dentro do Ceasa de Curitiba é operado em parceria com a <strong>Sindaruc PR</strong> — é ela quem abre as portas do entreposto, credencia a operação e dá o respaldo institucional que garante <strong>segurança e qualidade</strong> em cada pedido.</p>
-      <p>Na prática: você não está comprando de um atravessador qualquer, está comprando com quem representa o mercado por dentro.</p>
+      <p>Na prática: você está comprando diretamente de quem vive o mercado por dentro.</p>
       <div class="partner-points">
         <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Fornecedores selecionados</span>
         <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Operação dentro do Ceasa</span>
@@ -1091,7 +1074,7 @@ body::after{
         <div class="step-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg>
         </div>
-        <h3>Monte o Caminhãozinho</h3>
+        <h3>Monte o seu pedido</h3>
         <p>Selecione os itens, ajuste as quantidades e finalize o pedido do conforto de onde estiver — da loja, de casa, do celular.</p>
       </article>
       <article class="step reveal">
@@ -1287,11 +1270,6 @@ body::after{
       <div class="aud reveal"><div class="emoji">🍽️</div><h3>Restaurantes</h3><p>Insumos no ponto certo, entregues com previsibilidade.</p></div>
       <div class="aud reveal"><div class="emoji">🛒</div><h3>Atacarejos</h3><p>Volume com garantia de qualidade e rastreio completo.</p></div>
     </div>
-    <figure class="photo-band reveal">
-      <!-- Para usar uma foto real do Ceasa: descomente a linha abaixo e aponte pro arquivo -->
-      <!-- <img src="fotos/ceasa.jpg" alt="Movimentação de caixas de hortifrúti no Ceasa de Curitiba"> -->
-      <figcaption><strong>Ceasa de Curitiba</strong> — é daqui que a sua compra sai conferida, todos os dias.</figcaption>
-    </figure>
   </div>
 </section>
 
@@ -1301,8 +1279,7 @@ body::after{
     <div class="reveal">
       <span class="kicker">Cobertura</span>
       <h2>Do Ceasa de Curitiba para todo o Brasil.</h2>
-      <p style="color:var(--ink-soft);font-size:1.05rem">Toda a operação de compra e conferência acontece no Ceasa de Curitiba — e de lá, a logística chega à sua região, em qualquer canto do país.</p>
-      <p class="map-note">As cidades no mapa são referências — fala com a gente com a sua localização que a equipe confirma a rota até você.</p>
+      <p style="color:var(--ink-soft);font-size:1.05rem">É do Ceasa de Curitiba que tudo sai: a equipe compra, confere caixa a caixa e despacha a sua carga — e a logística chega à sua região, em qualquer canto do país.</p>
     </div>
     <svg class="map-svg reveal" viewBox="0 0 810 1012" aria-label="Mapa do Brasil com rotas de entrega saindo do Ceasa de Curitiba">
       <path class="map-state" d="M592 686 589 686 586 686 583 685 578 684 573 686 570 687 566 688 562 689 558 690 555 689 551 686 549 682 548 679 547 676 548 671 548 668 549 664 548 660 545 660 539 659 537 656 537 652 536 647 536 643 535 640 534 637 532 634 528 632 521 632 517 633 513 634 508 636 504 637 501 637 497 634 495 630 491 627 487 626 483 626 480 627 474 630 471 630 469 633 467 636 464 637 461 639 457 642 456 645 454 650 454 653 453 657 451 660 450 663 447 667 445 670 442 674 439 675 435 678 436 681 439 681 444 682 449 682 452 682 456 682 460 681 463 682 466 682 470 682 475 684 478 685 485 689 488 692 491 696 492 699 493 705 495 708 498 712 499 717 498 720 499 723 502 724 506 722 510 723 513 726 514 730 517 731 520 727 523 724 526 722 529 721 535 718 539 715 542 714 546 712 550 710 554 709 558 708 562 707 567 706 570 705 574 702 579 699 585 695 587 692 590 688Z"/>
@@ -1364,9 +1341,10 @@ body::after{
       <circle class="map-flow" r="5"><animateMotion dur="3.3s" repeatCount="indefinite" begin="2.75s" path="M508 731 Q488 755 468 824"/></circle>
       <circle class="map-hub-ring" cx="508" cy="731" r="18"/>
       <circle class="map-hub" cx="508" cy="731" r="11"/>
-      <text class="map-label map-label-hub" x="293" y="765">CEASA · Curitiba</text>
+      <text class="map-label map-label-hub" x="536" y="773">CEASA · Curitiba</text>
     </svg>
   </div>
+    
 </section>
 
 <!-- ================= FAQ ================= -->
@@ -1391,15 +1369,11 @@ body::after{
       </details>
       <details class="faq-item">
         <summary>Como recebo a cotação do dia?</summary>
-        <p class="faq-body">Direto no sistema, atualizada todos os dias seguindo o movimento real do mercado do Ceasa. Você abre, confere os preços e monta o Caminhãozinho.</p>
+        <p class="faq-body">Direto no sistema, atualizada todos os dias seguindo o movimento real do mercado do Ceasa. Você abre, confere os preços e monta o seu pedido.</p>
       </details>
       <details class="faq-item">
         <summary>Como funciona o pagamento?</summary>
         <p class="faq-body">As condições são combinadas no cadastro, de acordo com o perfil de compra da sua loja. Fala com a gente que a equipe explica as opções.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Atendem a minha cidade?</summary>
-        <p class="faq-body">A compra e a conferência acontecem no Ceasa de Curitiba, e a entrega pode chegar a regiões de todo o Brasil. Manda a sua localização no contato que a equipe confirma a logística e o prazo até você.</p>
       </details>
     </div>
   </div>
@@ -1417,7 +1391,7 @@ body::after{
           <div class="cta-steps">
             <div><b>1</b><span>Você chama no WhatsApp e conta o perfil da sua loja</span></div>
             <div><b>2</b><span>A equipe entende o padrão de qualidade que você espera</span></div>
-            <div><b>3</b><span>Você recebe o acesso e monta o primeiro Caminhãozinho</span></div>
+            <div><b>3</b><span>Você recebe o acesso e monta o seu primeiro pedido</span></div>
           </div>
           <div class="cta-ctas">
             <a href="https://wa.me/5541999999999?text=Ol%C3%A1!%20Quero%20cadastrar%20minha%20loja%20no%20EloLink." target="_blank" rel="noopener" class="btn btn-accent"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg> Chamar no WhatsApp</a>
@@ -1585,7 +1559,7 @@ document.getElementById('mockDate').textContent =
   new Date().toLocaleDateString('pt-BR', { weekday: 'long', day: '2-digit', month: 'long' });
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// ---------- Caminhãozinho (mock hero) ----------
+// ---------- Pedido (mock hero) ----------
 let cart = 0;
 const cartCount = document.getElementById('cartCount');
 const cartBadge = document.getElementById('cartBadge');
@@ -1701,7 +1675,7 @@ const stampObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.4 });
 stampObserver.observe(document.querySelector('.feed'));
 
-// ---------- Caminhãozinho viajante (segue uma estrada sinuosa) ----------
+// ---------- Caminhão viajante (segue uma estrada sinuosa) ----------
 const truckRider = document.getElementById('truckRider');
 const truckRot = document.getElementById('truckRot');
 const roadPath = document.getElementById('roadPath');
@@ -1761,7 +1735,7 @@ addEventListener('resize', () => { buildRoad(); rideUpdate(); });
 rideUpdate();
 setTimeout(() => truckRider.classList.remove('moving'), 400);
 
-// ---------- Buzina do caminhãozinho 📣 (clique perto dele, mesmo atrás do conteúdo) ----------
+// ---------- Buzina do caminhão 📣 (clique perto dele, mesmo atrás do conteúdo) ----------
 function honk() {
   truckRider.classList.remove('honk');
   void truckRider.offsetWidth;
