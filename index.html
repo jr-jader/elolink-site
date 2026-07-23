@@ -97,7 +97,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-#parceria,#como-funciona,#custo,#rastreio,#vantagens,#fornecedores,#para-quem,#depoimentos,#cobertura,#faq,#contato{scroll-margin-top:76px}
+#parceria,#como-funciona,#custo,#rastreio,#estrutura,#vantagens,#fornecedores,#para-quem,#depoimentos,#cobertura,#faq,#contato{scroll-margin-top:76px}
 html{background:var(--bg);transition:background-color .3s ease}
 body{
   font-family:var(--font-body);
@@ -867,6 +867,26 @@ body::after{
 .quote-who strong{display:block;font-size:.92rem;color:var(--heading);line-height:1.3}
 .quote-who small{font-size:.78rem;color:var(--ink-soft)}
 
+/* ---------- Estrutura (galeria de fotos/vídeos) ---------- */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:1.2rem}
+.shot{position:relative;border-radius:var(--radius-lg);overflow:hidden;background:var(--surface)}
+.shot.wide{grid-column:span 2;grid-row:span 2}
+.shot img,.shot video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.shot:hover img,.shot:hover video{transform:scale(1.04)}
+.shot-caption{
+  position:absolute;inset:auto 0 0 0;padding:2.2rem 1.1rem .9rem;
+  background:linear-gradient(transparent,rgba(10,20,14,.78));
+  color:#FBFAF6;font-size:.82rem;font-weight:600;
+}
+.shot-ph{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;
+  border:1.5px dashed var(--kraft-deep);border-radius:var(--radius-lg);
+  background:var(--surface-alt);color:var(--ink-soft);text-align:center;padding:1.2rem;
+}
+.shot-ph svg{color:var(--chip-text)}
+.shot-ph strong{font-size:.88rem;color:var(--heading);font-family:var(--font-display)}
+.shot-ph small{font-size:.75rem;max-width:30ch;line-height:1.45}
+
 /* ---------- Reveal on scroll ---------- */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s cubic-bezier(.22,1,.36,1)}
 .reveal.visible{opacity:1;transform:none}
@@ -878,6 +898,7 @@ body::after{
   .feat-grid{grid-template-columns:repeat(2,1fr)}
   .audience-grid{grid-template-columns:repeat(2,1fr)}
   .quotes-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
   .mock{transform:none}
 }
 @media (max-width:640px){
@@ -903,6 +924,8 @@ body::after{
   .mock-item{padding:.85rem 1rem;gap:.7rem}
   .mock-item .price{font-size:.8rem}
   .compare-card{padding:1.8rem 1.4rem}
+  .gallery-grid{grid-template-columns:1fr;grid-auto-rows:220px}
+  .shot.wide{grid-column:span 1;grid-row:span 1}
   .strip-inner{text-align:left;justify-content:flex-start}
 }
 @media (max-width:960px){
@@ -1247,6 +1270,70 @@ body::after{
     </div>
   </div>
   </section>
+
+<!-- ================= NOSSA ESTRUTURA ================= -->
+<!--
+  COMO TROCAR PELAS FOTOS/VÍDEOS REAIS:
+  1. Salve os arquivos em uma pasta "midia/" ao lado deste index.html.
+  2. Em cada <figure class="shot">, remova o <div class="shot-ph">…</div> e coloque no lugar:
+       FOTO:   <img src="midia/arquivo.jpg" alt="descreva a cena" loading="lazy">
+       VÍDEO:  <video src="midia/arquivo.mp4" autoplay muted loop playsinline></video>
+       (prefira .mp4 curto de 5–10s em vez de GIF — mesmo efeito visual, arquivo ~10x menor)
+  3. Descomente a <figcaption class="shot-caption"> do slot e ajuste o texto da legenda.
+  4. O slot grande (.shot.wide) é o melhor lugar para o vídeo.
+  O texto dentro de cada placeholder é a PAUTA da imagem que funciona naquele slot.
+-->
+<section id="estrutura">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="kicker">Nossa estrutura</span>
+      <h2>De dentro do Ceasa, com gente nossa.</h2>
+      <p>Estrutura própria no Ceasa de Curitiba: equipe conferindo, negociando e carregando — do box do fornecedor até o caminhão da sua loja.</p>
+    </div>
+    <div class="gallery-grid">
+      <figure class="shot wide reveal">
+        <div class="shot-ph">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>
+          <strong>Conferência caixa a caixa</strong>
+          <small>Melhor slot para vídeo: equipe conferindo e registrando as caixas na doca, em movimento.</small>
+        </div>
+        <!-- <figcaption class="shot-caption">Conferência caixa a caixa na doca do Ceasa</figcaption> -->
+      </figure>
+      <figure class="shot reveal">
+        <div class="shot-ph">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>
+          <strong>Estrutura no Ceasa</strong>
+          <small>Foto do espaço físico: galpão, box ou base de operação.</small>
+        </div>
+        <!-- <figcaption class="shot-caption">Nossa base dentro do Ceasa de Curitiba</figcaption> -->
+      </figure>
+      <figure class="shot reveal">
+        <div class="shot-ph">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <strong>Qualidade de perto</strong>
+          <small>Close de produto sendo inspecionado — a prova do padrão de qualidade.</small>
+        </div>
+        <!-- <figcaption class="shot-caption">Inspeção de qualidade antes do carregamento</figcaption> -->
+      </figure>
+      <figure class="shot reveal">
+        <div class="shot-ph">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/></svg>
+          <strong>Nossa equipe</strong>
+          <small>Foto do time — rosto humano é o que mais gera confiança.</small>
+        </div>
+        <!-- <figcaption class="shot-caption">A equipe EloLink no Ceasa</figcaption> -->
+      </figure>
+      <figure class="shot reveal">
+        <div class="shot-ph">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+          <strong>Negociação no box</strong>
+          <small>Equipe negociando direto com o fornecedor — o bastidor da cotação.</small>
+        </div>
+        <!-- <figcaption class="shot-caption">Negociação direto no box do fornecedor</figcaption> -->
+      </figure>
+    </div>
+  </div>
+</section>
 
 <!-- ================= VANTAGENS ================= -->
 <section class="features" id="vantagens">
@@ -1898,6 +1985,11 @@ const feedObserver = new IntersectionObserver(entries => {
   }
 }, { threshold: 0.3 });
 feedObserver.observe(feedList);
+
+// ---------- Estrutura: respeita reduced motion nos vídeos da galeria ----------
+if (reduceMotionEarly) {
+  document.querySelectorAll('#estrutura video').forEach(v => { v.removeAttribute('autoplay'); v.pause(); });
+}
 </script>
 </body>
 </html>
