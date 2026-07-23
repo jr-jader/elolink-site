@@ -97,7 +97,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-#parceria,#como-funciona,#custo,#rastreio,#estrutura,#vantagens,#fornecedores,#para-quem,#depoimentos,#cobertura,#faq,#contato{scroll-margin-top:76px}
+#parceria,#como-funciona,#custo,#rastreio,#sistema,#estrutura,#vantagens,#fornecedores,#para-quem,#depoimentos,#cobertura,#faq,#contato{scroll-margin-top:76px}
 html{background:var(--bg);transition:background-color .3s ease}
 body{
   font-family:var(--font-body);
@@ -127,7 +127,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .logo{display:flex;align-items:center;gap:.55rem;font-family:var(--font-display);font-weight:800;font-size:1.35rem;color:var(--heading)}
 .logo-mark{width:38px;height:38px;display:grid;place-items:center}
 .logo span em{font-style:normal;color:var(--accent)}
-.nav{display:flex;align-items:center;gap:1.8rem;font-size:.92rem;font-weight:500;color:var(--ink-soft)}
+.header .container{width:min(1240px,94%)}
+.nav{display:flex;align-items:center;gap:.9rem;font-size:.87rem;font-weight:500;color:var(--ink-soft)}
+.nav a{white-space:nowrap}
 .nav a{position:relative;padding:.2rem 0;transition:color .18s}
 .nav a:hover{color:var(--heading)}
 .nav a::after{content:"";position:absolute;left:0;bottom:-3px;width:0;height:2px;background:var(--accent);transition:width .22s ease}
@@ -887,11 +889,92 @@ body::after{
 .shot-ph strong{font-size:.88rem;color:var(--heading);font-family:var(--font-display)}
 .shot-ph small{font-size:.75rem;max-width:30ch;line-height:1.45}
 
+/* ---------- Prévia do sistema (mockups notebook + celular) ---------- */
+.sys-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:3.5rem;align-items:center}
+.sys-stage{position:relative;padding:0 3.4rem 2.8rem 0}
+.sys-grid{--bezel:#101815;--laptop-base-a:#DCE0DC;--laptop-base-b:#B7BDB7}
+[data-theme="dark"] .sys-grid{--bezel:#2E3B32;--laptop-base-a:#3A453C;--laptop-base-b:#222C25}
+.laptop-screen{
+  position:relative;border:10px solid var(--bezel);border-bottom:none;
+  border-radius:16px 16px 0 0;overflow:hidden;background:var(--surface);
+  box-shadow:0 30px 60px -22px rgba(14,58,38,.42);
+}
+.laptop-bar{display:flex;align-items:center;gap:.7rem;padding:.55rem .8rem;background:var(--surface);border-bottom:1px solid var(--line)}
+.laptop-bar .win-dots{display:flex;gap:.34rem}
+.laptop-bar .win-dots span{width:9px;height:9px;border-radius:50%;background:var(--line-strong)}
+.laptop-url{
+  flex:1;text-align:center;font-family:var(--font-mono);font-size:.68rem;color:var(--ink-soft);
+  background:var(--surface-alt);border-radius:999px;padding:.3rem .8rem;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.laptop-view{position:relative;aspect-ratio:16/9.8;background:var(--surface-alt)}
+.laptop-base{
+  height:15px;margin:0 -1.6rem;border-radius:0 0 16px 16px;position:relative;
+  background:linear-gradient(var(--laptop-base-a),var(--laptop-base-b));
+  box-shadow:0 14px 26px -14px rgba(14,58,38,.35);
+}
+.laptop-base::after{
+  content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:96px;height:6px;border-radius:0 0 8px 8px;background:rgba(14,58,38,.18);
+}
+.phone{
+  position:absolute;right:0;bottom:0;width:clamp(140px,27%,185px);
+  border:8px solid var(--bezel);border-radius:28px;overflow:hidden;background:var(--surface-alt);
+  box-shadow:0 26px 50px -18px rgba(0,0,0,.5);z-index:2;
+}
+.phone-notch{
+  position:absolute;top:7px;left:50%;transform:translateX(-50%);
+  width:36%;height:13px;border-radius:999px;background:var(--bezel);z-index:3;
+}
+.phone-view{position:relative;aspect-ratio:9/18.6}
+.laptop-view img,.phone-view img,.laptop-view video,.phone-view video{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;display:block;
+}
+.sys-stage .shot-ph{border-radius:0;gap:.55rem}
+.phone .shot-ph{padding:.8rem .5rem}
+.phone .shot-ph strong{font-size:.68rem}
+.phone .shot-ph small{font-size:.58rem;max-width:16ch}
+.sys-points{list-style:none;display:flex;flex-direction:column;gap:1.4rem;margin-top:2rem}
+.sys-points li{display:flex;gap:1rem;align-items:flex-start}
+.sys-points .sp-icon{
+  flex:none;width:38px;height:38px;border-radius:10px;
+  background:var(--chip-bg);display:grid;place-items:center;color:var(--chip-text);
+}
+.sys-points strong{display:block;font-family:var(--font-display);font-weight:600;font-size:1.02rem;margin-bottom:.15rem;color:var(--heading)}
+.sys-points p{font-size:.88rem;color:var(--ink-soft)}
+@media (max-width:960px){
+  .sys-grid{grid-template-columns:1fr;gap:3rem}
+  .sys-stage{order:2}
+}
+@media (max-width:640px){
+  .sys-stage{padding:0 1.6rem 2rem 0}
+  .laptop-base{margin:0 -.8rem}
+  .phone{right:-4px;width:clamp(110px,30%,150px)}
+  /* afasta o texto do placeholder da área coberta pelo celular */
+  .laptop-view .shot-ph{padding-right:32%}
+  .laptop-view .shot-ph small{max-width:22ch}
+}
+
 /* ---------- Reveal on scroll ---------- */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s cubic-bezier(.22,1,.36,1)}
 .reveal.visible{opacity:1;transform:none}
 
 /* ---------- Responsive ---------- */
+/* Menu vira hambúrguer abaixo de 1280px — com 9 links, o header não cabe inteiro antes disso */
+@media (max-width:1280px){
+  .nav{
+    position:fixed;inset:60px 0 auto 0;
+    background:var(--bg);flex-direction:column;gap:0;
+    border-bottom:1px solid var(--line);
+    padding:.5rem 0;display:none;box-shadow:0 20px 40px -20px rgba(14,58,38,.25);
+  }
+  .nav.open{display:flex}
+  .nav a{padding:.9rem 6%;width:100%}
+  .nav a::after{display:none}
+  .nav-toggle{display:flex}
+  .header-inner{gap:.6rem}
+  .header-actions{margin-left:auto}
+}
 @media (max-width:960px){
   .hero-grid,.track-grid{grid-template-columns:1fr;gap:3rem}
   .steps{grid-template-columns:repeat(2,1fr)}
@@ -905,19 +988,7 @@ body::after{
   section{padding:4rem 0}
   .hero{padding:3.5rem 0}
   .steps,.feat-grid,.audience-grid{grid-template-columns:1fr}
-  .nav{
-    position:fixed;inset:60px 0 auto 0;
-    background:var(--bg);flex-direction:column;gap:0;
-    border-bottom:1px solid var(--line);
-    padding:.5rem 0;display:none;box-shadow:0 20px 40px -20px rgba(14,58,38,.25);
-  }
-  .nav.open{display:flex}
-  .nav a{padding:.9rem 6%;width:100%}
-  .nav a::after{display:none}
-  .nav-toggle{display:flex}
   .header-actions .btn-primary{display:none}
-  .header-inner{gap:.6rem}
-  .header-actions{margin-left:auto}
   .cta-card{padding:3rem 1.6rem}
   .hero-ctas .btn{width:100%;justify-content:center}
   .hero-proof{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
@@ -957,9 +1028,12 @@ body::after{
       <a href="#parceria">Parceria</a>
       <a href="#como-funciona">Como funciona</a>
       <a href="#custo">Custo zero</a>
-      <a href="#rastreio">Rastreamento</a>
+      <a href="#rastreio">Rastreio</a>
+      <a href="#estrutura">Estrutura</a>
       <a href="#vantagens">Vantagens</a>
+      <a href="#fornecedores">Fornecedores</a>
       <a href="#para-quem">Para quem</a>
+      <a href="#depoimentos">Depoimentos</a>
     </nav>
     <div class="header-actions">
       <button class="theme-toggle" id="themeToggle" aria-label="Alternar entre modo claro e escuro">
@@ -1270,6 +1344,89 @@ body::after{
     </div>
   </div>
   </section>
+
+<!-- ================= PRÉVIA DO SISTEMA ================= -->
+<!--
+  COMO TROCAR PELOS PRINTS REAIS DO SISTEMA:
+  1. Tire os prints e salve em "midia/" ao lado deste index.html.
+     - Notebook: print da tela de cotação/pedido no desktop, proporção ~16:10 (ex.: 1600×980).
+     - Celular: print do rastreio/pedido no celular, proporção ~9:19 (ex.: 750×1550).
+  2. ANTES de exportar, borre nomes de clientes, CNPJs e qualquer dado sensível.
+  3. Em cada tela, remova o <div class="shot-ph">…</div> e coloque no lugar:
+       <img src="midia/tela-cotacao.jpg" alt="descreva a tela" loading="lazy">
+     (também aceita <video autoplay muted loop playsinline> para gravação curta de tela)
+  4. NÃO use base64 — o arquivo já está pesado; referencie o arquivo em midia/.
+  O texto dentro de cada placeholder é a PAUTA do print que funciona naquele slot.
+-->
+<section id="sistema">
+  <div class="container sys-grid">
+    <div class="sys-stage reveal" aria-label="Prévia das telas do sistema EloLink no notebook e no celular">
+      <div class="laptop">
+        <div class="laptop-screen">
+          <div class="laptop-bar">
+            <span class="win-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span class="laptop-url">Sistema EloLink · Cotação do dia</span>
+          </div>
+          <div class="laptop-view">
+            <div class="shot-ph">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+              <strong>Print do sistema no computador</strong>
+              <small>Melhor tela: cotação do dia com a lista de produtos e o pedido sendo montado.</small>
+            </div>
+          </div>
+        </div>
+        <div class="laptop-base" aria-hidden="true"></div>
+      </div>
+      <div class="phone">
+        <span class="phone-notch" aria-hidden="true"></span>
+        <div class="phone-view">
+          <div class="shot-ph">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg>
+            <strong>Print no celular</strong>
+            <small>Tela do rastreio do pedido em andamento.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-head reveal" style="margin-bottom:0">
+        <span class="kicker">Prévia do sistema</span>
+        <h2>Veja como o EloLink é por dentro.</h2>
+        <p>Tudo o que esta página descreve acontece numa tela simples, feita pra quem tem pressa. Estas molduras recebem capturas reais do sistema — a mesma tela que nossos clientes usam todos os dias.</p>
+      </div>
+      <ul class="sys-points">
+        <li class="reveal">
+          <span class="sp-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></svg>
+          </span>
+          <div>
+            <strong>Cotação do dia, organizada</strong>
+            <p>Os preços atualizados do Ceasa, produto por produto — sem telefonema e sem áudio de WhatsApp.</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="sp-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg>
+          </span>
+          <div>
+            <strong>Pedido em poucos cliques</strong>
+            <p>Você monta o pedido direto na cotação, revisa e envia. Tudo fica registrado, sem papel.</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="sp-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg>
+          </span>
+          <div>
+            <strong>Acompanhamento no celular</strong>
+            <p>O rastreio caixa a caixa que você viu acima, na palma da mão — de onde você estiver.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
 
 <!-- ================= NOSSA ESTRUTURA ================= -->
 <!--
