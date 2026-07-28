@@ -832,21 +832,20 @@ body::after{
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
   mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
 }
-.supplier-track{display:flex;width:max-content;animation:rail 32s linear infinite}
+.supplier-rail + .supplier-rail{margin-top:1.2rem}
+.supplier-track{display:flex;width:max-content;animation:rail 46s linear infinite}
+.supplier-rail--reverse .supplier-track{animation-direction:reverse}
 .supplier-rail:hover .supplier-track{animation-play-state:paused}
 @keyframes rail{to{transform:translateX(-50%)}}
 .supplier-group{display:flex;gap:1.2rem;padding-right:1.2rem}
 .supplier-chip{
-  flex:none;display:flex;align-items:center;gap:.65rem;
-  padding:1.05rem 1.7rem;border-radius:var(--radius);
-  background:var(--surface);border:1px solid var(--line);
-  color:var(--ink-soft);font-weight:600;font-size:.9rem;white-space:nowrap;
-  filter:grayscale(1);opacity:.7;
-  transition:filter .25s ease,opacity .25s ease,border-color .25s ease;
+  flex:none;width:108px;height:108px;border-radius:var(--radius);
+  background:#fff;border:1px solid var(--line);overflow:hidden;
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
 }
-.supplier-chip:hover{filter:grayscale(0);opacity:1;border-color:var(--line-strong)}
-.supplier-chip svg{color:var(--chip-text)}
-.supplier-chip img{height:36px;width:auto;display:block}
+.supplier-chip:hover{transform:translateY(-4px);border-color:var(--line-strong);box-shadow:var(--shadow)}
+.supplier-chip img{width:100%;height:100%;object-fit:cover;display:block}
+@media (max-width:640px){.supplier-chip{width:84px;height:84px}}
 
 /* ---------- Depoimentos ---------- */
 .quotes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
@@ -1546,34 +1545,82 @@ body::after{
     </div>
   </div>
   <!--
-    COMO TROCAR PELOS LOGOS REAIS:
-    1. Salve os logos em uma pasta "logos/" ao lado deste index.html.
-    2. Substitua cada chip placeholder abaixo por:
-         <div class="supplier-chip"><img src="logos/nome-do-fornecedor.png" alt="Nome do fornecedor"></div>
-       (o CSS já deixa o logo em preto-e-branco e devolve a cor no hover)
-    3. IMPORTANTE: os itens existem em DOIS grupos idênticos (.supplier-group) — é isso que
-       faz o loop infinito ser contínuo. Toda alteração feita no primeiro grupo deve ser
-       repetida igual no segundo (o que tem aria-hidden="true").
+    LOGOS DOS FORNECEDORES:
+    - Arquivos em midia/logos-fornecedores/*.webp (cartao branco 480x480).
+    - Para adicionar um fornecedor, inclua o chip nos DOIS grupos (.supplier-group)
+      do mesmo rail — o segundo (aria-hidden="true") e o que fecha o loop infinito.
+    - Faltam ~16 logos para completar os 44 parceiros; distribua entre os dois rails
+      para manter as fileiras equilibradas.
   -->
   <div class="supplier-rail reveal" aria-label="Fornecedores parceiros do EloLink">
     <div class="supplier-track">
       <div class="supplier-group">
-        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
-        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
-        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
-        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
-        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
-        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
-        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/araujo-martins.webp" alt="Araújo Martins" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/benassi.webp" alt="Benassi" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/bonny.webp" alt="Bonny" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/bp.webp" alt="BP" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/cantu.webp" alt="Cantu" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/chogo.webp" alt="Chogo" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/eneka.webp" alt="Eneka" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/festiva.webp" alt="Festiva" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/fiorese.webp" alt="Fiorese" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/frizon.webp" alt="Frizon" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/frutimais.webp" alt="Frutimais" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/frutsol.webp" alt="Frutsol" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/fruvil.webp" alt="Fruvil" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/garuvense.webp" alt="Garuvense" loading="lazy" width="480" height="480"></div>
       </div>
       <div class="supplier-group" aria-hidden="true">
-        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
-        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
-        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
-        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
-        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
-        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
-        <div class="supplier-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 20V8.35a2 2 0 0 0-1.26-1.85l-8-3.2a2 2 0 0 0-1.48 0l-8 3.2A2 2 0 0 0 2 8.35V20"/><path d="M6 20v-9h12v9"/><path d="M6 14h12"/><path d="M6 17h12"/></svg>Logo do fornecedor</div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/araujo-martins.webp" alt="Araújo Martins" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/benassi.webp" alt="Benassi" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/bonny.webp" alt="Bonny" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/bp.webp" alt="BP" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/cantu.webp" alt="Cantu" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/chogo.webp" alt="Chogo" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/eneka.webp" alt="Eneka" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/festiva.webp" alt="Festiva" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/fiorese.webp" alt="Fiorese" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/frizon.webp" alt="Frizon" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/frutimais.webp" alt="Frutimais" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/frutsol.webp" alt="Frutsol" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/fruvil.webp" alt="Fruvil" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/garuvense.webp" alt="Garuvense" loading="lazy" width="480" height="480"></div>
+      </div>
+    </div>
+  </div>
+  <div class="supplier-rail supplier-rail--reverse reveal" aria-label="Fornecedores parceiros do EloLink">
+    <div class="supplier-track">
+      <div class="supplier-group">
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/gr.webp" alt="GR" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/gralha-azul.webp" alt="Gralha Azul" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/imperio-abacaxi.webp" alt="Império Abacaxi" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/jcr.webp" alt="JCR" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/ki-alho.webp" alt="Ki-Alho" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/lv.webp" alt="LV" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/mamao-brasil.webp" alt="Mamão Brasil" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/master-frutas.webp" alt="Master Frutas" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/minao-ogura.webp" alt="Minao Ogura" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/minasul.webp" alt="Minasul" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/nova-era.webp" alt="Nova Era" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/red-frutas.webp" alt="Red Frutas" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/siedeliski.webp" alt="Siedeliski" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/vale-bonito.webp" alt="Vale Bonito" loading="lazy" width="480" height="480"></div>
+      </div>
+      <div class="supplier-group" aria-hidden="true">
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/gr.webp" alt="GR" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/gralha-azul.webp" alt="Gralha Azul" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/imperio-abacaxi.webp" alt="Império Abacaxi" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/jcr.webp" alt="JCR" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/ki-alho.webp" alt="Ki-Alho" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/lv.webp" alt="LV" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/mamao-brasil.webp" alt="Mamão Brasil" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/master-frutas.webp" alt="Master Frutas" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/minao-ogura.webp" alt="Minao Ogura" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/minasul.webp" alt="Minasul" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/nova-era.webp" alt="Nova Era" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/red-frutas.webp" alt="Red Frutas" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/siedeliski.webp" alt="Siedeliski" loading="lazy" width="480" height="480"></div>
+        <div class="supplier-chip"><img src="midia/logos-fornecedores/vale-bonito.webp" alt="Vale Bonito" loading="lazy" width="480" height="480"></div>
       </div>
     </div>
   </div>
